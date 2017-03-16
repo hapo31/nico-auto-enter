@@ -1,0 +1,17 @@
+{
+    "manifest_version": 2,
+    "name": "Niconama auto entry",
+    "description": "開場時間になったら自動でページを更新する拡張機能ﾃﾞｽ.",
+    "version": "1.0",
+    "content_scripts": [
+        {
+            "matches": [
+                "http://live.nicovideo.jp/gate/*"
+            ],
+            "css":["css/style.css"],
+            "js": ["scripts/jquery.min.js", "scripts/script.js"]
+        }
+    ],
+    "permissions": [
+    ]
+}
