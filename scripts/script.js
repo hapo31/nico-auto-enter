@@ -39,8 +39,6 @@ function init() {
             resetStorage();
             return;
         }
-        // ストレージにIDを保存しておく
-        storeStrage(streamId, liveUrl, document.title);
         const openDate = new Date(`${date} ${open}:00`);
         const now = new Date();
 
@@ -56,6 +54,8 @@ function init() {
             "font-weight": "bold",
             "color": "red"
         }));
+        // ストレージにIDを保存しておく
+        storeStrage(streamId, liveUrl, document.title);
     } catch (e) {
         console.error(e);
     }
