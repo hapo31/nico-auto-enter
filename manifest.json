@@ -6,12 +6,27 @@
     "content_scripts": [
         {
             "matches": [
-                "http://live.nicovideo.jp/gate/*"
+                "http://live.nicovideo.jp/gate/*",
+                "http://live.nicovideo.jp/watch/*",
+                "http://live.nicovideo.jp/overcapacity"
             ],
-            "css":["css/style.css"],
-            "js": ["scripts/jquery.min.js", "scripts/script.js"]
+            "css": [
+                "css/style.css"
+            ],
+            "js": [
+                "scripts/jquery.min.js",
+                "scripts/script.js",
+                "scripts/page.js"
+            ]
         }
     ],
     "permissions": [
-    ]
+        "storage"
+    ],
+    "browser_action": {
+        "default_icon": {
+            "32": "icon.ico"
+        },
+        "default_popup": "popup.html"
+    }
 }
