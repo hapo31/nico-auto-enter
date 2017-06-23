@@ -19,7 +19,7 @@
 function init() {
     try {
         const entry_info = $(".kaijo").find("strong");
-        if (entry_info == null) {
+        if (entry_info == null || entry_info.length === 0) {
             // 見れたっぽい場合はストレージを消す
             resetStorage();
             return;
