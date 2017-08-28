@@ -25,7 +25,7 @@ function update(values) {
     }
     if (url) {
         const el = document.getElementById("liveUrl");
-        el.setAttribute("htef", url);
+        el.setAttribute("href", url);
         el.innerText = url;
     }
 }
