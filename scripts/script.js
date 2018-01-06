@@ -25,7 +25,8 @@ function init() {
             return;
         }
         const date = $(entry_info[0]).text().substr(0, 10);
-        const open = $(entry_info[1]).text();
+        const openTime = $(entry_info[1]).text();
+        const openTImeMatch = openTime.match(/(\d\d):(\d\d)/);
         const streamUrlQuery = location.href.split("/")[4];
         const idQueryIndex = streamUrlQuery.indexOf("?");
         const streamId = streamUrlQuery.substring(0, idQueryIndex >= 0 ? idQueryIndex : undefined);
@@ -39,8 +40,18 @@ function init() {
             resetStorage();
             return;
         }
-        const openDate = new Date(`${date} ${open}:00`);
+        let hourInt = parseInt(openTImeMatch[1], 10);
+        const minInt = parseInt(openTImeMatch[2], 10);
+
+        const openDate = new Date(`${date}`);
         const now = new Date();
+
+        // 24:30 みたいな24時を超えた時刻表記に対応させる
+        if (hourInt >= 24 && minInt !== 0) {
+            openDate.setDate(openDate.getDate() + 1);
+            hourInt -= 24;
+        }
+        openDate.setHours(hourInt, minInt);
 
         const timer = setTimeout(() => {
             location.href = liveUrl;
